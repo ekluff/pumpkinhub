@@ -1,8 +1,8 @@
-import DS from 'ember-data';
+import Parent from './parent';
 
-export default DS.Model.extend({
+export default Parent.extend({
   latitude: DS.attr('number'),
-  longtitude: DS.attr('number'),
+  longitude: DS.attr('number'),
   image: DS.attr(),
   name: DS.attr(),
   type: DS.attr(),
@@ -11,6 +11,9 @@ export default DS.Model.extend({
   author: DS.attr(),
   openDate: DS.attr(),
   closeDate: DS.attr(),
-  comments: DS.hasMany('comment', { async: true }),
+  comments: DS.hasMany('comment', {
+    async: true,
+    inverse: 'place'
+  }),
   tag: DS.belongsTo('tag', { async: true })
 });

@@ -1,8 +1,11 @@
-import DS from 'ember-data';
+import Parent from './parent';
 
-export default DS.Model.extend({
+export default Parent.extend({
   image: DS.attr(),
   title: DS.attr(),
   caption: DS.attr(),
-  comments: DS.hasMany('comment', { async: true }),
+  comments: DS.hasMany('comment', {
+    async: true,
+    inverse: 'post',
+  }),
 });
